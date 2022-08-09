@@ -7,7 +7,8 @@ import (
 	"strings"
 )
 
-func Generate(plaintext string, salt string) (r string) {
+func Generate(plaintext string, ds model.DeviceSecret) (r string) {
+	r = genPass(plaintext, ds)
 	return
 }
 
