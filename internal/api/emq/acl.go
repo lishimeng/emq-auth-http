@@ -1,4 +1,4 @@
-package api
+package emq
 
 import "github.com/kataras/iris/v12"
 

@@ -2,20 +2,13 @@ package api
 
 import (
 	"github.com/kataras/iris/v12"
+	"github.com/lishimeng/emq-auth-http/internal/api/emq"
+	"github.com/lishimeng/emq-auth-http/internal/api/lorawan"
 )
 
 func Route(app *iris.Application) {
 	root := app.Party("/")
-	router(root)
+	emq.Router(root.Party("/emq"))
+	lorawan.Router(root.Party("/lorawan"))
 	return
-}
-
-func router(root iris.Party) {
-	mqtt(root.Party("/v5.0"))
-}
-func mqtt(p iris.Party) {
-	p.Post("/auth", Auth)
-	p.Post("/auth/{client_id}", Auth)
-	p.Post("/acl", Acl)
-	p.Post("/acl/{client_id}", Acl)
 }
