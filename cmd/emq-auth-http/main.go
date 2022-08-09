@@ -22,6 +22,7 @@ func main() {
 		}
 	}()
 
+	fmt.Println("start app:")
 	fmt.Println(cmd.AppName)
 	fmt.Println(cmd.Version)
 
@@ -61,7 +62,7 @@ func _main() (err error) {
 		builder.
 			//EnableDatabase(dbConfig.Build(),
 			//model.Tables()...).
-			//SetWebLogLevel("debug").
+			SetWebLogLevel("debug").
 			EnableWeb(etc.Config.Web.Listen, api.Route)
 		//ComponentBefore(setup.JobClearExpireTask).
 		//ComponentBefore(setup.BeforeStarted).

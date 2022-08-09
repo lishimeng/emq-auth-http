@@ -11,11 +11,11 @@ func Route(app *iris.Application) {
 }
 
 func router(root iris.Party) {
-	mqtt(root.Party("/mqtt"))
-
+	mqtt(root.Party("/v5.0"))
 }
 func mqtt(p iris.Party) {
 	p.Post("/auth", Auth)
+	p.Post("/auth/{client_id}", Auth)
 	p.Post("/acl", Acl)
-	p.Post("/superuser", SuperUser)
+	p.Post("/acl/{client_id}", Acl)
 }
