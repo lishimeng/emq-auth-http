@@ -3,11 +3,13 @@ module github.com/lishimeng/emq-auth-http
 go 1.18
 
 require (
+	github.com/ZZMarquis/gm v1.3.2
 	github.com/kataras/iris/v12 v12.2.0-beta2
 	github.com/lib/pq v1.10.2
 	github.com/lishimeng/app-starter v1.6.9
 	github.com/lishimeng/go-log v1.0.0
 	github.com/lishimeng/go-orm v1.2.1
+	golang.org/x/crypto v0.0.0-20220507011949-2cf3adece122
 )
 
 require (
@@ -73,7 +75,6 @@ require (
 	github.com/vmihailenco/msgpack/v5 v5.3.5 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/yosssi/ace v0.0.5 // indirect
-	golang.org/x/crypto v0.0.0-20220507011949-2cf3adece122 // indirect
 	golang.org/x/exp v0.0.0-20201221025956-e89b829e73ea // indirect
 	golang.org/x/net v0.0.0-20220425223048-2871e0cb64e4 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
