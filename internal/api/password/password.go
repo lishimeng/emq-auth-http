@@ -15,8 +15,9 @@ type Req struct {
 }
 
 type Resp struct {
-	Password       string `json:"password,omitempty"`
-	PasswordEncode string `json:"password_encode,omitempty"`
+	Username       string `json:"username,omitempty"`
+	Password       string `json:"password,omitempty" json:"password,omitempty"`
+	PasswordEncode string `json:"password_encode,omitempty" json:"password_encode,omitempty"`
 }
 
 func gen(ctx iris.Context) {
@@ -39,6 +40,8 @@ func gen(ctx iris.Context) {
 		util.ResponseJSON(ctx, resp)
 		return
 	}
+
+	resp.Username = req.Username
 
 	if len(req.Password) == 0 {
 		log.Debug("password nil, use random")

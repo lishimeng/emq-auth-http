@@ -22,9 +22,10 @@ func main() {
 		}
 	}()
 
-	fmt.Println("start app:")
 	fmt.Println(cmd.AppName)
 	fmt.Println(cmd.Version)
+	fmt.Println(cmd.Commit)
+	fmt.Println(cmd.Build)
 
 	err := _main()
 	if err != nil {
