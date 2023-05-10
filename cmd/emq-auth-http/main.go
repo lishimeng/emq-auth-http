@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/lishimeng/app-starter"
 	etc2 "github.com/lishimeng/app-starter/etc"
-	"github.com/lishimeng/emq-auth-http/cmd"
 	"github.com/lishimeng/emq-auth-http/internal/api"
 	"github.com/lishimeng/emq-auth-http/internal/db/model"
 	"github.com/lishimeng/emq-auth-http/internal/etc"
@@ -21,11 +20,6 @@ func main() {
 			fmt.Println(err)
 		}
 	}()
-
-	fmt.Println(cmd.AppName)
-	fmt.Println(cmd.Version)
-	fmt.Println(cmd.Commit)
-	fmt.Println(cmd.Build)
 
 	err := _main()
 	if err != nil {
@@ -66,7 +60,8 @@ func _main() (err error) {
 			EnableDatabase(dbConfig.Build(),
 				model.Tables()...).
 			SetWebLogLevel("debug").
-			EnableWeb(etc.Config.Web.Listen, api.Route)
+			EnableWeb(etc.Config.Web.Listen, api.Route).
+			PrintVersion()
 		return err
 	}, func(s string) {
 		log.Info(s)

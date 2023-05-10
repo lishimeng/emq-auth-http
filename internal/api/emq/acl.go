@@ -1,6 +1,9 @@
 package emq
 
-import "github.com/kataras/iris/v12"
+import (
+	"github.com/kataras/iris/v12"
+	"github.com/lishimeng/app-starter/tool"
+)
 
 type AclResult string
 
@@ -25,5 +28,5 @@ func Acl(ctx iris.Context) {
 	// 不控制acl
 	var resp AclResp
 	resp.Result = AclIgnore
-	_, _ = ctx.JSON(resp)
+	tool.ResponseJSON(ctx, resp)
 }

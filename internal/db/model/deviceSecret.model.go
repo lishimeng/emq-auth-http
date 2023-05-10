@@ -1,10 +1,12 @@
 package model
 
+import "github.com/lishimeng/app-starter"
+
 type DeviceSecret struct {
-	Pk
+	app.Pk
 	Username string `orm:"column(username);unique"`
 	Password string `orm:"column(password)"`
-	TableChangeInfo
+	app.TableChangeInfo
 }
 
 const (

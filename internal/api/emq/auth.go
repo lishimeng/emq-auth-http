@@ -2,8 +2,8 @@ package emq
 
 import (
 	"github.com/kataras/iris/v12"
+	"github.com/lishimeng/app-starter/tool"
 	"github.com/lishimeng/emq-auth-http/internal/passwd"
-	"github.com/lishimeng/emq-auth-http/internal/util"
 	"github.com/lishimeng/go-log"
 )
 
@@ -37,18 +37,18 @@ func Auth(ctx iris.Context) {
 
 	if err != nil {
 		resp.Result = AuthDeny
-		util.ResponseJSON(ctx, resp)
+		tool.ResponseJSON(ctx, resp)
 		return
 	}
 
-	log.Info("u:%s, p:%s", req.Username, req.Password)
+	log.Debug("u:%s, p:%s", req.Username, "********")
 
 	u, err := getUser(req.Username)
 	if err != nil {
 		log.Info(err)
 		resp.Result = AuthDeny
 		resp.IsSuperuser = false
-		_, _ = ctx.JSON(resp)
+		tool.ResponseJSON(ctx, resp)
 		return
 	}
 
@@ -58,5 +58,5 @@ func Auth(ctx iris.Context) {
 	} else {
 		resp.Result = AuthAllow
 	}
-	util.ResponseJSON(ctx, resp)
+	tool.ResponseJSON(ctx, resp)
 }
