@@ -3,7 +3,6 @@ module github.com/lishimeng/emq-auth-http
 go 1.18
 
 require (
-	github.com/ZZMarquis/gm v1.3.2
 	github.com/kataras/iris/v12 v12.2.0
 	github.com/lib/pq v1.10.5
 	github.com/lishimeng/app-starter v1.10.14
@@ -17,6 +16,7 @@ require (
 	github.com/CloudyKit/jet/v6 v6.2.0 // indirect
 	github.com/Joker/jade v1.1.3 // indirect
 	github.com/Shopify/goreferrer v0.0.0-20220729165902-8cddb4f5de06 // indirect
+	github.com/ZZMarquis/gm v1.3.2 // indirect
 	github.com/andybalholm/brotli v1.0.5 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
 	github.com/beego/beego/v2 v2.0.7 // indirect
