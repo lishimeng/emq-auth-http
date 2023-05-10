@@ -8,6 +8,6 @@ func Router(root iris.Party) {
 	otaa(root.Party("/otaa"))
 }
 func otaa(p iris.Party) {
-	p.Get("/", otaaKey)
-	p.Get("/{dev_eui}", otaaKey)
+	p.Post("/{dev_eui}", genOTAAKey)
+	p.Get("/{dev_eui}", getOTAAKey)
 }
