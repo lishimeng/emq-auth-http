@@ -5,6 +5,7 @@ import (
 	"github.com/lishimeng/emq-auth-http/internal/api/emq"
 	"github.com/lishimeng/emq-auth-http/internal/api/lorawan"
 	"github.com/lishimeng/emq-auth-http/internal/api/password"
+	"github.com/lishimeng/emq-auth-http/internal/api/secret"
 )
 
 func Route(app *iris.Application) {
@@ -12,5 +13,6 @@ func Route(app *iris.Application) {
 	emq.Router(root.Party("/emq"))
 	lorawan.Router(root.Party("/lorawan"))
 	password.Router(root.Party("/password"))
+	secret.Route(root.Party("/secret"))
 	return
 }

@@ -70,7 +70,3 @@ func getUser(username string) (ds model.DeviceSecret, err error) {
 	err = app.GetOrm().Context.QueryTable(new(model.DeviceSecret)).Filter("Username", username).One(&ds)
 	return
 }
-
-func Router(p iris.Party) {
-	p.Post("/", gen)
-}

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/lishimeng/app-starter"
 	etc2 "github.com/lishimeng/app-starter/etc"
+	"github.com/lishimeng/app-starter/token"
 	"github.com/lishimeng/emq-auth-http/internal/api"
 	"github.com/lishimeng/emq-auth-http/internal/db/model"
 	"github.com/lishimeng/emq-auth-http/internal/etc"
@@ -54,6 +55,19 @@ func _main() (err error) {
 			InitDb:    true,
 			AliasName: "default",
 			SSL:       etc.Config.Db.Ssl,
+		}
+
+		if etc.Config.Token.Enable {
+			issuer := etc.Config.Token.Issuer
+			verifyKey := []byte(etc.Config.Token.Key)
+			builder = builder.EnableTokenValidator(func(inject app.TokenValidatorInjectFunc) {
+				provider := token.NewJwtProvider(issuer,
+					token.WithKey(nil, verifyKey), // hs256的秘钥必须是[]byte
+					token.WithAlg("HS256"),
+				)
+				storage := token.NewLocalStorage(provider)
+				inject(storage)
+			})
 		}
 
 		builder.
